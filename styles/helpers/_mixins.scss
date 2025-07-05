@@ -1,0 +1,101 @@
+@use 'sass:math';
+
+// Миксин для адаптивного (fluid) размера текста
+// Позволяет плавно изменять размер шрифта от $min до $max в зависимости от ширины вьюпорта.
+// Использует CSS-функцию clamp(), которая ограничивает значение между минимумом и максимумом.
+//
+// Параметры:
+// $max — максимальный размер шрифта в px (по умолчанию 48px)
+// $min — минимальный размер шрифта в px (по умолчанию 16px)
+//
+// Пример использования:
+//    @include fluid-text(36, 18); // шрифт будет адаптироваться от 18px до 36px
+@mixin fluid-text($max: 48, $min: 16) {
+  $maxViewportWidth: 1920; // Максимальная ширина экрана, на которой достигается $max размер шрифта
+  $minViewportWidth: 390; // Минимальная ширина экрана, на которой достигается $min размер шрифта
+
+  // Преобразование размеров и ширин из px в rem (предполагается, что 1rem = 16px)
+  $maxSize: math.div($max, 16);
+  $minSize: math.div($min, 16);
+  $maxWidth: math.div($maxViewportWidth, 16);
+  $minWidth: math.div($minViewportWidth, 16);
+
+  // Вычисление наклона линии (slope) и пересечения по оси Y (intercept)
+  // Это формула линейной зависимости: fontSize = slope * viewportWidth + yAxisIntersection
+  $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+  $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+  // Применение адаптивного размера текста с помощью clamp()
+  // Значение будет меняться от $minSize до $maxSize в зависимости от ширины экрана
+  font-size: clamp(
+    #{$minSize * 1rem},
+    // минимальное значение
+    #{$yAxisIntersection * 1rem} + #{$slope * 100vw},
+    // адаптивная формула
+    #{$maxSize * 1rem} // максимальное значение
+  );
+}
+
+// Миксин для скрытия элемента:
+// Делает элемент полностью прозрачным и невидимым для пользователя.
+// Используется, когда нужно скрыть элемент, но сохранить его в DOM (для анимации, логики и т.п.)
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+// Миксин для отображения элемента:
+// Делает элемент полностью видимым.
+// Часто используется вместе с @mixin hide для переключения видимости (например, в анимациях или по состоянию).
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+// Миксин для центрирования содержимого по горизонтали и вертикали с помощью Flexbox
+// Параметр $isInline (по умолчанию false) позволяет выбрать между display: flex и display: inline-flex
+// Используется для центровки любого контента в контейнере
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+// Миксин для абсолютного центрирования элемента по горизонтали и вертикали
+// Использует translate для точного выравнивания относительно центра родителя
+// Требует, чтобы родитель имел position: relative или другую позицию, отличную от static
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+// Миксин для создания квадрата с заданным размером
+// Устанавливает одинаковую ширину и высоту, образуя квадрат
+// Подходит, если нужно строгое управление размерами, особенно в старых браузерах без поддержки aspect-ratio
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+// Миксин для скрытия элемента визуально, но сохранения его в DOM для скринридеров
+// Используется для улучшения доступности: текст или элементы видимы для читалок, но не для глаз
+// Полный аналог class="visually-hidden" в Bootstrap или других UI-библиотеках
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
