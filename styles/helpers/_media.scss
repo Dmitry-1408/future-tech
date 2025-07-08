@@ -9,7 +9,7 @@ $mobile-s: 480.98;
 // laptop
 @mixin laptop-above {
   @media (width > rem($laptop)) {
-    @content;
+    @content; // Вставляет CSS-код, обёрнутый этим миксином
   }
 }
 

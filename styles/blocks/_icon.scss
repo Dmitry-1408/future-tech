@@ -1,0 +1,27 @@
+@use '../helpers' as *;
+
+.icon {
+  display: inline-flex; // Элемент будет строчным flex-контейнером, чтобы выравнивать содержимое по центру по вертикали
+  align-items: center; 
+  column-gap: rem(10);
+
+  &::after {
+    --size: #{rem(24)}; // Создаём CSS-переменную --size со значением 24px в rem, используя функцию SCSS
+
+    @include square(
+      var(--size)
+    ); // Mixin устанавливает одинаковые ширину и высоту — квадрат
+
+    content: ''; // Создаём псевдоэлемент ::after, обязательно задав content
+    flex-shrink: 0; // Запрещаем элементу сжиматься в flex-контейнере
+    background-position: center; // Центрируем фон по горизонтали и вертикали
+    background-size: contain; // Масштабируем фон так, чтобы он целиком помещался внутрь (без обрезки)
+    background-repeat: no-repeat; // Запрещаем повтор фона
+  }
+
+  &--yellow-arrow{
+    &::after{
+        background-image: url(../../icons/arrow-top-right_yellow.svg);
+    }
+  }
+}
