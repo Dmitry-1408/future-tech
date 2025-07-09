@@ -1,5 +1,12 @@
 @use 'helpers' as *;
 
+// исключает скролл страницы которая находится под открытым меню гамбургера
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
 body {
   @include fluid-text(18, 14);
 
@@ -111,11 +118,11 @@ a {
 
 // увеличение кликабелиной области элемента до 44px
 a,
-button{
-  &[aria-label]{
+button {
+  &[aria-label] {
     position: relative;
 
-    &::before{
+    &::before {
       @include abs-center;
       @include square(rem(44));
 
