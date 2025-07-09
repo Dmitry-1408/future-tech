@@ -108,3 +108,18 @@ a {
   outline-offset: rem(4);
   transition-duration: 0s !important;
 }
+
+// увеличение кликабелиной области элемента до 44px
+a,
+button{
+  &[aria-label]{
+    position: relative;
+
+    &::before{
+      @include abs-center;
+      @include square(rem(44));
+
+      content: '';
+    }
+  }
+}
