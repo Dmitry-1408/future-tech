@@ -7,7 +7,7 @@
   animation-name: scrolling-header; // Название анимации, применяемой к заголовку при прокрутке
   animation-fill-mode: both; // Указывает, что финальное состояние анимации должно сохраняться
   animation-timeline: scroll(); // Использование scroll() как временной шкалы анимации
-  animation-range: rem(100) rem(200); // Диапазон прокрутки, в котором будет происходить анимация
+  animation-range: rem(0) rem(200); // Диапазон прокрутки, в котором будет происходить анимация
 
   // Определение анимации scrolling-header
   @keyframes scrolling-header {

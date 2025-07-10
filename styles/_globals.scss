@@ -33,7 +33,7 @@ h4,
 h5,
 .h5,
 h6,
-.h7 {
+.h6 {
   color: var(--color-light);
 }
 
@@ -52,7 +52,7 @@ h4,
 h5,
 .h5,
 h6,
-.h7 {
+.h6 {
   font-weight: 600;
 }
 
@@ -86,7 +86,7 @@ h5,
 }
 
 h6,
-.h7 {
+.h6 {
   @include fluid-text(20, 16);
 }
 
