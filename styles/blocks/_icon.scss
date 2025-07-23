@@ -17,14 +17,21 @@
     background-position: center; // Центрируем фон по горизонтали и вертикали
     background-size: contain; // Масштабируем фон так, чтобы он целиком помещался внутрь (без обрезки)
     background-repeat: no-repeat; // Запрещаем повтор фона
+
+    @include laptop {
+      --size: #{rem(20)};
+    }
   }
 
-  @include laptop {
-    --size: #{rem(20)};
-  }
   &--yellow-arrow {
     &::after {
       background-image: url(../../icons/arrow-top-right_yellow.svg);
+    }
+  }
+
+  &--yellow-eye {
+    &::after {
+      background-image: url(../../icons/eye-yellow.svg);
     }
   }
 }
