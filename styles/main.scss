@@ -27,12 +27,11 @@
 @use 'blocks/blog-card';
 @use 'blocks/download-info';
 @use 'blocks/bordered-grid';
-@use 'blocks/raiting-view';
+@use 'blocks/rating-view';
 @use 'blocks/rewiew-card';
 
-
 .header,
-main>*:not(:last-child),
-.footer{
-    display: none;
+main > *:not(:last-child),
+.footer {
+  display: none;
 }
