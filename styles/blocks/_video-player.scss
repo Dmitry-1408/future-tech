@@ -23,9 +23,9 @@
     padding: rem(30);
     transition-duration: var(--transition-duration);
 
-    //&:not(.is-active) {
-    //@include hide:
-    //}
+    &:not(.is-active) {
+      @include hide;
+    }
 
     &::before {
       content: '';
@@ -39,7 +39,7 @@
     }
 
     * {
-        position: relative;
+      position: relative;
     }
   }
 
@@ -55,7 +55,7 @@
     border: none;
 
     @include hover {
-        color: var(--color-accent);
+      color: var(--color-accent);
     }
 
     @include laptop {
