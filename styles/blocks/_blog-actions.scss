@@ -29,11 +29,11 @@
     }
 
     &.is-active {
-        svg * {
-          fill: var(--color-red);
-          stroke: var(--color-red);
-        }
+      svg * {
+        fill: var(--color-red);
+        stroke: var(--color-red);
       }
+    }
   }
 
   &__icon-wrapper {
