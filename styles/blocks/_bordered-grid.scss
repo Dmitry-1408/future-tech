@@ -33,7 +33,7 @@
     @include mobile {
       --columns: 1;
 
-      .bordered-grid__item:not(:last-child){
+      .bordered-grid__item:not(:last-child) {
         border-bottom: var(--border);
       }
     }
@@ -42,6 +42,8 @@
   &--3-cols {
     --columns: 3;
     --itemPaddingX: #{rem(50)};
+
+    column-gap: calc(var(--itemPaddingX) * 2);
 
     @include laptop {
       --itemPaddingX: #{rem(40)};
@@ -52,8 +54,17 @@
         /* выбираем элементы в 1-й и 2-й колонке */
         &:nth-child(3n-2),
         &:nth-child(3n-1) {
-          padding-right: var(--itemPaddingX);
-          border-right: var(--border);
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(100% + var(--itemPaddingX));
+            width: rem(1);
+            height: 100%;
+            background-color: var(--color-dark-15);
+          }
         }
 
         /* элементы во 2-й колонке */
@@ -61,11 +72,6 @@
           @include full-vw-centered-line(bottom);
         }
 
-        /* выбираем элементы во 2-й и 3-й колонке */
-        &:nth-child(3n-1),
-        &:nth-child(3n) {
-          padding-left: var(--itemPaddingX);
-        }
       }
     }
 
