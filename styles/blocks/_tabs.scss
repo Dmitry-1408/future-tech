@@ -5,7 +5,7 @@
     border-bottom: var(--border);
 
     @include tablet {
-        overflow-x: auto;
+      overflow-x: auto;
     }
   }
 
@@ -20,7 +20,27 @@
     }
 
     @include tablet {
-        width: max-content;
+      width: max-content;
+    }
+
+    &--compact {
+      display: inline-flex;
+      column-gap: rem(10);
+      padding: rem(10);
+      background-color: var(--color-dark);
+      border-radius: rem(10);
+
+      .tabs__button {
+        padding-block: rem(18);
+
+        &.is-active{
+          background-color: var(--color-dark-15);
+        }
+
+        @include laptop{
+          padding-block: rem(14);
+        }
+      }
     }
   }
 
@@ -37,25 +57,25 @@
     }
 
     @include hover {
-        color: var(--color-accent);
-        border-color: var(--color-accent);
+      color: var(--color-accent);
+      border-color: var(--color-accent);
     }
 
-    &.is-active{
-        color: var(--color-light);
-        font-weight: 500;
-        background-color: var(--color-dark-10);
-        pointer-events: none;
+    &.is-active {
+      color: var(--color-light);
+      font-weight: 500;
+      background-color: var(--color-dark-10);
+      pointer-events: none;
     }
   }
 
   &__content {
-    &:not(.is-active){
-        display: none;
+    &:not(.is-active) {
+      display: none;
     }
 
     &:focus-visible {
-        outline-offset: -1rem;
+      outline-offset: -1rem;
     }
   }
 }
