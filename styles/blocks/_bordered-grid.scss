@@ -71,7 +71,6 @@
         &:nth-child(3n-1) {
           @include full-vw-centered-line(bottom);
         }
-
       }
     }
 
@@ -81,6 +80,46 @@
       .bordered-grid__item:not(:last-child) {
         border-bottom: var(--border);
       }
+    }
+  }
+
+  &--4-cols {
+    --columns: 4;
+    --itemPaddingX: #{rem(50)};
+
+    column-gap: calc(var(--itemPaddingX) * 2);
+
+    @include laptop {
+      --itemPaddingX: #{rem(30)};
+    }
+
+    @include tablet-above {
+      .bordered-grid__item {
+        /* эл-ты в 1-й, 2-й и 3-й колонке */
+        &:nth-child(4n - 3),
+        &:nth-child(4n - 2),
+        &:nth-child(4n - 1) {
+          position: relative;
+  
+          &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(100% + var(--itemPaddingX));
+            width: rem(1);
+            height: 100%;
+            background-color: var(--color-dark-15);
+          }
+        }
+      }
+    }
+
+    @include tablet {
+      --columns: 2;
+    }
+
+    @include mobile {
+      --columns: 1;
     }
   }
 

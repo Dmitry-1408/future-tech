@@ -1710,6 +1710,43 @@ button[aria-label]::before {
     border-bottom: var(--border);
   }
 }
+.bordered-grid--4-cols {
+  --columns: 4;
+  --itemPaddingX: 3.125rem;
+  column-gap: calc(var(--itemPaddingX) * 2);
+}
+@media (width <= 90.06125rem) {
+  .bordered-grid--4-cols {
+    --itemPaddingX: 1.875rem;
+  }
+}
+@media (width > 63.99875rem) {
+  .bordered-grid--4-cols .bordered-grid__item {
+    /* эл-ты в 1-й, 2-й и 3-й колонке */
+  }
+  .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-3), .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-2), .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-1) {
+    position: relative;
+  }
+  .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-3)::after, .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-2)::after, .bordered-grid--4-cols .bordered-grid__item:nth-child(4n-1)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(100% + var(--itemPaddingX));
+    width: 0.0625rem;
+    height: 100%;
+    background-color: var(--color-dark-15);
+  }
+}
+@media (width <= 63.99875rem) {
+  .bordered-grid--4-cols {
+    --columns: 2;
+  }
+}
+@media (width <= 47.99875rem) {
+  .bordered-grid--4-cols {
+    --columns: 1;
+  }
+}
 .bordered-grid__item {
   padding-block: var(--itemPaddingY);
 }
@@ -2295,6 +2332,10 @@ button[aria-label]::before {
   .report-card__actions {
     column-gap: 0.625rem;
   }
+}
+
+.contacts__header {
+  border-bottom: var(--border);
 }
 
 .header,
