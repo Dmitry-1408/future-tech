@@ -2297,10 +2297,10 @@ button[aria-label]::before {
   }
 }
 
-/* .header,
+.header,
 main > *:not(:last-child),
 .footer {
   display: none;
-} */
+}
 
 /*# sourceMappingURL=main.css.map */
