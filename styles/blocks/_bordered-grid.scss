@@ -30,13 +30,7 @@
       }
     }
 
-    @include mobile {
-      --columns: 1;
-
-      .bordered-grid__item:not(:last-child) {
-        border-bottom: var(--border);
-      }
-    }
+    
   }
 
   &--3-cols {
@@ -100,8 +94,8 @@
         &:nth-child(4n - 2),
         &:nth-child(4n - 1) {
           position: relative;
-  
-          &::after{
+
+          &::after {
             content: '';
             position: absolute;
             top: 0;
@@ -117,9 +111,16 @@
     @include tablet {
       --columns: 2;
     }
+  }
 
+  &--2-cols,
+  &--4-cols {
     @include mobile {
       --columns: 1;
+
+      .bordered-grid__item:not(:last-child) {
+        border-bottom: var(--border);
+      }
     }
   }
 
