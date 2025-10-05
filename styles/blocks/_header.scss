@@ -6,7 +6,9 @@
   z-index: 100;
   animation-name: scrolling-header; // Название анимации, применяемой к заголовку при прокрутке
   animation-fill-mode: both; // Указывает, что финальное состояние анимации должно сохраняться
-  animation-timeline: scroll(); // Использование scroll() как временной шкалы анимации
+  animation-timeline: scroll(
+
+  ); // Использование scroll() как временной шкалы анимации
   animation-range: rem(0) rem(200); // Диапазон прокрутки, в котором будет происходить анимация
 
   // Определение анимации scrolling-header
@@ -25,6 +27,18 @@
 
     @include mobile {
       padding-block: rem(14);
+    }
+
+    @include mobile-s {
+      font-size: rem(12);
+    }
+
+    &-link {
+      .icon {
+        @include mobile-s {
+          column-gap: rem(5);
+        }
+      }
     }
   }
 

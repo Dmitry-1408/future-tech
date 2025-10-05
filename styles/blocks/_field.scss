@@ -20,7 +20,7 @@
     width: 100%;
 
     @include laptop {
-        column-gap: rem(12);
+      column-gap: rem(12);
     }
   }
 
@@ -44,12 +44,16 @@
     }
 
     @include hover {
-        border-color: var(--color-accent);
-        box-shadow: var(--shadow);
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow);
     }
 
     &::placeholder {
-        color: var(--color-dark-40);
+      color: var(--color-dark-40);
+    }
+
+    &:user-invalid {
+      border-color: var(--color-red);
     }
   }
 
@@ -59,11 +63,11 @@
     padding-block: rem(20);
 
     @include laptop {
-        padding-block: rem(16);
+      padding-block: rem(16);
     }
 
     @include mobile {
-        min-height: rem(127);
+      min-height: rem(127);
     }
   }
 }
